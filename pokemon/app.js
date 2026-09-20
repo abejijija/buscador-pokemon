@@ -1,11 +1,11 @@
-// Atrapamos los elementos del HTML
+
 const input = document.getElementById('pokemonInput');
 const btn = document.getElementById('searchBtn');
 const card = document.getElementById('pokemonCard');
 
-// Cuando hagan clic en el botón de buscar
+
 btn.addEventListener('click', () => {
-    // Tomamos lo que el usuario escribió
+
     const query = input.value.trim().toLowerCase();
     
     if (query === '') {
@@ -13,10 +13,8 @@ btn.addEventListener('click', () => {
         return; 
     }
 
-    // Mensaje de carga
     card.innerHTML = '<p>Buscando...</p>';
 
-    // Consumimos la PokeAPI
     fetch(`https://pokeapi.co/api/v2/pokemon/${query}`)
         .then(response => {
             if (!response.ok) {
@@ -25,7 +23,7 @@ btn.addEventListener('click', () => {
             return response.json();
         })
         .then(data => {
-            // Insertamos la información y la imagen en el DOM (el HTML)
+
             card.innerHTML = `
                 <h2>${data.name.toUpperCase()}</h2>
                 <p><strong>ID:</strong> #${data.id}</p>
